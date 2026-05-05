@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Catálogo - MiTienda{% endblock %}
+{% block content %}
+<h1>Catálogo de Productos</h1>
+
+<div class="catalogo">
+    {% for producto in productos %}
+    <div class="producto-card">
+        <h3>{{ producto.nombre }}</h3>
+        <p class="precio">${{ producto.precio }}</p>
+        {% if producto.disponible %}
+        <p class="disponible">✅ Disponible</p>
+        {% else %}
+        <p class="agotado">❌ Agotado</p>
+        {% endif %}
+        <p>{{ producto.descripcion }}</p>
+        <a href="{% url 'editar_producto' producto.id %}" class="btn-editar">Editar</a>
+        <a href="{% url 'eliminar_producto' producto.id %}" class="btn-eliminar">Eliminar</a>
+    </div>
+    {% empty %}
+    <p>No hay productos en el catálogo.</p>
+    {% endfor %}
+</div>
+{% endblock %}

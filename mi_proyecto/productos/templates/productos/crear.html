@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% block title %}Agregar Producto - MiTienda{% endblock %}
+{% block extra_head %}
+<style>
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    padding: 2.5rem 3rem;
+    width: 100%;
+    max-width: 520px;
+    margin: 2rem auto;
+}
+.card-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+.card-header h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1a202c;
+}
+.card-header p {
+    margin-top: 0.25rem;
+    font-size: 0.9rem;
+    color: #718096;
+}
+form p {
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+form label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #4a5568;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+form input[type="text"],
+form input[type="number"],
+form input[type="email"],
+form textarea,
+form select {
+    width: 100%;
+    padding: 0.6rem 0.85rem;
+    border: 1.5px solid #cbd5e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #2d3748;
+    background-color: #f7fafc;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+}
+form input[type="text"]:focus,
+form input[type="number"]:focus,
+form input[type="email"]:focus,
+form textarea:focus,
+form select:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+    background-color: #fff;
+}
+form input[type="checkbox"] {
+    width: 1.1rem;
+    height: 1.1rem;
+    accent-color: #4f46e5;
+    cursor: pointer;
+}
+.form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e2e8f0;
+}
+.btn-guardar {
+    background-color: #4f46e5;
+    color: #ffffff;
+    border: none;
+    padding: 0.65rem 1.75rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+.btn-guardar:hover {
+    background-color: #4338ca;
+}
+.btn-guardar:active {
+    transform: scale(0.97);
+}
+.btn-volver {
+    color: #4f46e5;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: color 0.2s;
+}
+.btn-volver:hover {
+    color: #4338ca;
+    text-decoration: underline;
+}
+</style>
+{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h1>Agregar Producto</h1>
+        <p>Completa los campos para añadir un nuevo producto al catálogo.</p>
+    </div>
+    <form method="POST">
+        {% csrf_token %}
+        {{ formulario.as_p }}
+        <div class="form-actions">
+            <a href="{% url 'catalogo' %}" class="btn-volver">&#8592; Volver al catálogo</a>
+            <button type="submit" class="btn-guardar">Guardar</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

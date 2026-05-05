@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 420px;
+            padding: 40px 36px;
+        }
+
+        .card h1 {
+            font-size: 1.75rem;
+            color: #2d3748;
+            text-align: center;
+            margin-bottom: 28px;
+            font-weight: 700;
+        }
+
+        .card h1 span {
+            display: block;
+            font-size: 0.875rem;
+            color: #718096;
+            font-weight: 400;
+            margin-top: 6px;
+        }
+
+        form p {
+            margin-bottom: 18px;
+        }
+
+        form label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #4a5568;
+            margin-bottom: 6px;
+        }
+
+        form input[type="text"],
+        form input[type="password"] {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            color: #2d3748;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            outline: none;
+            background: #f7fafc;
+        }
+
+        form input[type="text"]:focus,
+        form input[type="password"]:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+            background: #fff;
+        }
+
+        .helptext {
+            display: block;
+            font-size: 0.75rem;
+            color: #a0aec0;
+            margin-top: 4px;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .helptext li {
+            margin-bottom: 2px;
+        }
+
+        .errorlist {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 4px;
+        }
+
+        .errorlist li {
+            font-size: 0.8rem;
+            color: #e53e3e;
+            background: #fff5f5;
+            border: 1px solid #fed7d7;
+            border-radius: 6px;
+            padding: 6px 10px;
+            margin-bottom: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+            margin-top: 6px;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 22px;
+            font-size: 0.9rem;
+            color: #718096;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Crear cuenta <span>Regístrate para empezar</span></h1>
+
+        <form method="post" novalidate>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Registrarse</button>
+        </form>
+
+        <div class="footer">
+            ¿Ya tienes cuenta? <a href="{% url 'login' %}">Inicia sesión</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Inicio - MiTienda{% endblock %}
+{% block content %}
+<h1>Bienvenido a {{ nombre_tienda }}, espero que disfrutes tu visita</h1>
+{% if user.is_authenticated %}
+<p>Hola, {{ user.username }}</p>
+{% endif %}
+{% if total > 0 %}
+<p>Tenemos {{ total }} productos disponibles.</p>
+{% else %}
+<p>No hay productos en este momento.</p>
+{% endif %}
+<div class="hover-3d">
+  <!-- content -->
+  <figure class="max-w-100 rounded-2xl">
+    <img src="https://img.daisyui.com/images/stock/creditcard.webp" alt="3D card" />
+  </figure>
+  <!-- 8 empty divs needed for the 3D effect -->
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+{% endblock %}
