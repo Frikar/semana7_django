@@ -11,5 +11,6 @@ dependencies = [
     "django-environ>=0.13.0",
     "django-ninja>=1.6.2",
     "django-unfold>=0.90.0",
+    "openai>=2.36.0",
     "redis>=7.4.0",
 ]

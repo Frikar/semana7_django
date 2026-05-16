@@ -1,0 +1,12 @@
+    <div class="producto-card">
+        <h3>{{ producto.nombre }}</h3>
+        <p class="precio">${{ producto.precio }}</p>
+        {% if producto.disponible %}
+        <p class="disponible">✅ Disponible en tienda</p>
+        {% else %}
+        <p class="agotado">❌ Agotado por los momentos</p>
+        {% endif %}
+        <p>{{ producto.descripcion }}</p>
+        <a href="{% url 'editar_producto' producto.id %}" class="btn-editar">Editar</a>
+        <a href="{% url 'eliminar_producto' producto.id %}" class="btn-eliminar">Eliminar</a>
+    </div>
